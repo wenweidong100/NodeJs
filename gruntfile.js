@@ -75,16 +75,53 @@
 
 module.exports = function(grunt){
 	grunt.initConfig({
+		pkg:grunt.file.readJSON('package.json'),
 		concat: {
 			//这里是concat任务的配置信息
 		},
 		uglify: {
 			//这里是uglify任务的配置信息
+			options: {
+				stripBanners:true,
+				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+			},
+			dist: {
+				src: './grunt/js/*.js',
+				dest: './grunt/dest/<%= pkg.name %>-<%= pkg.version %>.js'
+			}
 		},
-		//任意非任务特定属性
-		my_property: 'whatever',
-		my_src_file: ['foo/*.js', 'bar/*.js']
+		sass:{
+			dist:{
+				option:{
+					style:'compressed'
+				},
+				expand:true,//启用下面的选项
+				cwd:'./grunt/scss/',//cwd相当于给所有匹配的文件设置一个相对的起点。
+				src:'*.scss',
+				dest:'./grunt/css/',
+				ext:'.min.css'//输出格式
+			},
+			dev:{
+
+			}
+		},
+		jshint:{
+			build:['gruntfile.js,./grunt/js/*.js'],
+			options:{
+				jshint:'.jshint'
+			}
+		}
+
+		////任意非任务特定属性
+		//my_property: 'whatever',
+		//my_src_file: ['foo/*.js', 'bar/*.js']
 	});
+
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+
+	grunt.registerTask('default',['uglify','sass','jshint']);
 }
 
 
