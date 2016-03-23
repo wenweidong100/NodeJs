@@ -106,9 +106,9 @@ module.exports = function(grunt){
 			}
 		},
 		jshint:{
-			build:['gruntfile.js,./grunt/js/*.js'],
+			build:['Gruntfile.js','./grunt/js/*.js'],
 			options:{
-				jshint:'.jshint'
+				jshintrc:'.jshintrc'
 			}
 		},
 		watch:{
@@ -130,7 +130,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('default',['uglify','sass','jshint','watch']);
-}
+};
 
 
 
