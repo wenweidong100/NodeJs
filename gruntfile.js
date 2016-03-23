@@ -110,6 +110,13 @@ module.exports = function(grunt){
 			options:{
 				jshint:'.jshint'
 			}
+		},
+		watch:{
+			dist:{
+				files:['./grunt/js/*.js'],
+				tasks:['uglify','sass'],
+				options:{spawn:false}
+			}
 		}
 
 		////任意非任务特定属性
@@ -120,8 +127,9 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('default',['uglify','sass','jshint']);
+	grunt.registerTask('default',['uglify','sass','jshint','watch']);
 }
 
 

@@ -1,4 +1,3 @@
-function add( a,b){
-	a=a+c;
+function tes22(a,b){
 	return a+b
 }
