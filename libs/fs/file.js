@@ -42,11 +42,10 @@ fs.stat('input.txt', function (err, stats) {
 
 
 //异步模式下写入文件 fs.writeFile(filename, data[, options], callback)
-/*
 var fs = require("fs");
 
 console.log("准备写入文件");
-fs.writeFile('inputs.txt', './input.txt',  function(err) {
+fs.writeFile('inputs.txt', '123213',  function(err) {
 	if (err) {
 		return console.error(err);
 	}
@@ -59,7 +58,7 @@ fs.writeFile('inputs.txt', './input.txt',  function(err) {
 		}
 		console.log("异步读取文件数据: " + data.toString());
 	});
-});*/
+});
 
 //异步模式下读取文件 fs.read(fd, buffer, offset, length, position, callback)
 
