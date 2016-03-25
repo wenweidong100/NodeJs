@@ -2,7 +2,6 @@ var path = require('path');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 //定义了一些文件夹的路径
 var ROOT_PATH = path.resolve(__dirname);
-console.log(ROOT_PATH)
 var APP_PATH = path.resolve(ROOT_PATH);
 var BUILD_PATH = path.resolve(APP_PATH, 'build');
 module.exports = {
@@ -19,12 +18,12 @@ module.exports = {
 			title: 'Hello World app'
 		})
 	],
-	devServer: {
+/*	devServer: {
 		historyApiFallback: true,
 		hot: true,
 		inline: true,
 		progress: true,
-	},
+	},*/
 /*css-loader会遍历css文件，找到所有的url(...)并且处理。
 style-loader会把所有的样式插入到你页面的一个style tag中。*/
 	module: {
@@ -36,7 +35,7 @@ style-loader会把所有的样式插入到你页面的一个style tag中。*/
 			},
 			{
 				test:/\.(png|jpg)$/,
-				loader:"url?limit=888",/*注意后面那个limit的参数，当你图片大小小于这个限制的时候，会自动启用base64编码图片。*/
+				loader:"url?limit=8555588",/*注意后面那个limit的参数，当你图片大小小于这个限制的时候，会自动启用base64编码图片。*/
 			},
 			{
 				test:/\.jsx$/,

@@ -35,7 +35,7 @@ style-loader会把所有的样式插入到你页面的一个style tag中。*/
 			},
 			{
 				test:/\.(png|jpg)$/,
-				loader:"url?limit=888",/*注意后面那个limit的参数，当你图片大小小于这个限制的时候，会自动启用base64编码图片。*/
+				loader:"url?limit=8888",/*注意后面那个limit的参数，当你图片大小小于这个限制的时候，会自动启用base64编码图片。*/
 			},
 			{
 				test:/\.jsx$/,
@@ -47,4 +47,14 @@ style-loader会把所有的样式插入到你页面的一个style tag中。*/
 			}
 		]
 	},
+	perLoaders: [
+		{
+			test: /\.jsx?$/,
+			include: APP_PATH,
+			loader: 'jshint-loader'
+		}
+	],
+	jshint:{
+		"esnext":true
+	}
 };
