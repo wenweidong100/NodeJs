@@ -74,6 +74,7 @@
 };*/
 
 module.exports = function(grunt){
+	var autoprefixer = require('autoprefixer-core');
 	grunt.initConfig({
 		pkg:grunt.file.readJSON('package.json'),
 		concat: {
@@ -117,7 +118,24 @@ module.exports = function(grunt){
 				tasks:['uglify','sass'],
 				options:{spawn:false}
 			}
-		}
+		},
+		postcss: {
+			options: {
+				processors: [
+					autoprefixer({ browsers: ['last 2 version'] }).postcss
+				]
+			},
+			// dist: {
+			//  src: 'src/css/*.css',
+			//  dest:'dest/css/*.css'
+			// }
+			multiple_files: {
+				expand: true,
+				flatten: true,
+				src: './grunt/scss/*.css', // -> src/css/file1.css, src/css/file2.css
+				dest: './grunt/dest/' // -> dest/css/file1.css, dest/css/file2.css
+			},
+		},
 
 		////任意非任务特定属性
 		//my_property: 'whatever',
@@ -128,8 +146,10 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-postcss');
 
-	grunt.registerTask('default',['uglify','sass','jshint','watch']);
+	//grunt.registerTask('default',['uglify','sass','jshint','watch']);
+	grunt.registerTask('default', ['postcss']);
 };
 
 
