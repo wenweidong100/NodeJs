@@ -1,4 +1,13 @@
-.home {
-  padding: 50px; }
-  .home .t {
-    margin-left: 50px; }
+
+@font-face {
+  font-family: 'fontello';
+  src: url('../fontello/font/fontello.eot?26047473');
+  src: url('../fontello/font/fontello.eot?26047473#iefix') format('embedded-opentype'),
+  url('../fontello/font/fontello.woff?26047473') format('woff'),
+  url('../fontello/font/fontello.ttf?26047473') format('truetype'),
+  url('../fontello/font/fontello.svg?26047473#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/*.test{font-family: fontello;}*/
+.demo-icon{font-family: fontello;font-style: normal;}
