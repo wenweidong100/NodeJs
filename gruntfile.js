@@ -97,9 +97,9 @@ module.exports = function(grunt){
 					style:'compressed'
 				},
 				expand:true,//启用下面的选项
-				cwd:'./grunt/scss/',//cwd相当于给所有匹配的文件设置一个相对的起点。
+				cwd:'./animate/',//cwd相当于给所有匹配的文件设置一个相对的起点。
 				src:'*.scss',
-				dest:'./grunt/css/',
+				dest:'./animate/',
 				ext:'.min.css'//输出格式
 			},
 			dev:{
@@ -146,10 +146,10 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-postcss');
+	//grunt.loadNpmTasks('grunt-postcss');
 
 	//grunt.registerTask('default',['uglify','sass','jshint','watch']);
-	grunt.registerTask('default', ['postcss']);
+	//grunt.registerTask('default', ['postcss']);
 };
 
 

@@ -1,0 +1,85 @@
+$image: "http://www.w3cplus.com/sites/default/files/blogs/2015/1506/huadenchushang.jpg";
+
+$width:100vw;
+$height:100vh;
+
+$raindrops:120;
+
+body{
+	background:#222;
+}
+.container{
+	position:relative;
+	width:$width;
+	height:$height;
+	overflow:hidden;
+}
+.window{
+	position:absolute;
+	width:$width;
+	height:$height;
+	background:url($image);
+	background-size:cover;
+	background-position:50%;
+	filter:blur(10px);
+}
+
+.raindrops,
+.borders,
+.drops{
+	position:absolute;
+}
+
+.drops{
+	filter:brightness(1.2);
+}
+
+.raindrop{
+	position:absolute;
+	border-radius:100%;
+	background-image:url($image);
+	background-size:$width*0.05 $height*0.05;
+	background-position:50%;
+	transform:rotate(180deg) rotateY(0);
+}
+.border{
+	position:absolute;
+	margin-left:2px;
+	margin-top:1px;
+	border-radius:100%;
+	box-shadow:0 0 0 2px rgba(0,0,0,0.5);
+	transform:rotateY(0);
+}
+
+@for $i from 1 through $raindrops{
+	$x:random();
+	$y:random();
+	$drop-width:5px+random(11);
+	$drop-stretch:0.7+(random()*0.5);
+	$drop-delay: (random()*2.5) + 1;
+	$drop-height:$drop-width*$drop-stretch;
+	.raindrop:nth-child(#{$i}){
+		left:$x * $width;
+		top:$y * $height;
+		width:$drop-width;
+		height:$drop-height;
+		background-position:percentage($x) percentage($y);
+		animation: #{$drop-delay}s falling 0.3s ease-in infinite;
+	}
+
+	.border:nth-child(#{$i}){
+		left:$x * $width;
+		top:$y * $height;
+		width:$drop-width - 4;
+		height:$drop-height;
+		animation: #{$drop-delay}s falling 0.3s ease-in infinite;
+	}
+}
+@keyframes falling {
+	from {
+
+	}
+	to {
+		transform: translateY(500px);
+	}
+}
